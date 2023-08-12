@@ -27,9 +27,9 @@ If you right click on an edge of multiplicity one, it will remove the edge.
 Left click on a mutable node to perform the quiver mutation at that node.
 
 # To-do:
-1. Create a config file for users to change certain variables, such as size, total number of nodes, etc.
-2. Increase reliability of edge creation.
-3. Make edge multiplicity more visible.
-4. Add instructions for installation.
-5. Recreate program for the web.
-6. Clean-up the code.
+- Create a config file for users to change certain variables, such as size, total number of nodes, etc.
+- Increase reliability of edge creation.
+- Make edge multiplicity more visible.
+- Add instructions for installation.
+- Recreate program for the web.
+- Clean-up the code.
