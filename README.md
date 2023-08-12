@@ -32,3 +32,4 @@ Left click on a mutable node to perform the quiver mutation at that node.
 3. Make edge multiplicity more visible.
 4. Add instructions for installation.
 5. Recreate program for the web.
+6. Clean-up the code.
