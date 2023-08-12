@@ -31,3 +31,4 @@ Left click on a mutable node to perform the quiver mutation at that node.
 2. Increase reliability of edge creation.
 3. Make edge multiplicity more visible.
 4. Add instructions for installation.
+5. Recreate program for the web.
