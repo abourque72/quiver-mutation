@@ -30,3 +30,4 @@ Left click on a mutable node to perform the quiver mutation at that node.
 1. Create a config file for users to change certain variables, such as size, total number of nodes, etc.
 2. Increase reliability of edge creation.
 3. Make edge multiplicity more visible.
+4. Add instructions for installation.
