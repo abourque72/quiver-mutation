@@ -14,7 +14,6 @@ In all other modes, the empty nodes will disappear, but returning to this mode w
 Self explanatory; you can move nodes around by left clicking and dragging.
 
 3. Edges:
-Currently a bit buggy (and needs a visual fix for the edge multiplicity).
 Edges are oriented.
 Click one node; that will be the initial node of an edge. Then, click another node; that will be the final node of the edge.
 Since I am following the conventions in https://arxiv.org/abs/1608.05735, loops and oriented 2-cycles are not allowed.
@@ -26,3 +25,8 @@ If you right click on an edge of multiplicity one, it will remove the edge.
 
 4. Mutate:
 Left click on a mutable node to perform the quiver mutation at that node.
+
+# To-do:
+1. Create a config file for users to change certain variables, such as size, total number of nodes, etc.
+2. Increase reliability of edge creation.
+3. Make edge multiplicity more visible.
