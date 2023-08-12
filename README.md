@@ -1,5 +1,5 @@
 # quiver-mutation
-play around with quiver mutation
+Play around with quiver mutation!
 You will need to install python, pip, and tkinter.
 Based on the rules in https://arxiv.org/abs/1608.05735
 ----------------------------------
