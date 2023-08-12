@@ -8,7 +8,7 @@ There are four modes: set nodes, move nodes, edges, and mutate.
 1. Set Nodes:
 Here, you can choose which nodes will be frozen and which nodes will be mutable.
 Click once to make it frozen (displays an F), click again to make it mutable (displays an M), and click again to make it empty.
-In all other modes, the empty nodes will disappear.
+In all other modes, the empty nodes will disappear, but returning to this mode will make them reappear.
 
 2. Move Nodes:
 Self explanatory; you can move nodes around by left clicking and dragging.
