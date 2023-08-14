@@ -1,4 +1,4 @@
-num_rows = 5
-num_cols = 5
-node_radius = 10
-node_spacing = 100
+num_rows=5
+num_columns=6
+node_radius=10
+node_spacing=100

@@ -311,7 +311,7 @@ if __name__ == "__main__":
     cfg_numcols = 5
     cfg_noderadius = 10
     cfg_nodespacing = 100
-    cfg = 'flip_config.txt'
+    cfg = 'quiver_config.txt'
     try:
         with open(cfg, 'r') as file:
             for line in file:
