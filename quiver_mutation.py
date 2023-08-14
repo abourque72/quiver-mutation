@@ -1,11 +1,11 @@
 import tkinter as tk
 from functools import partial 
 
-node_radius = 10
-node_spacing = 100
+#node_radius = 10
+#node_spacing = 100
 
 class Node:
-    def __init__(self, app, canvas, x, y):
+    def __init__(self, app, canvas, x, y, node_radius):
         self.app = app
         self.canvas = canvas
         self.x = x
@@ -16,7 +16,7 @@ class Node:
         self.id = canvas.create_oval(x - self.radius, y - self.radius,
                                      x + self.radius, y + self.radius,
                                      outline='black', fill = 'white', tags='node')
-        self.text_id = canvas.create_text(x,y, text=self.letters[self.current_letter], font=('Arial', node_radius+2, 'bold'))
+        self.text_id = canvas.create_text(x,y, text=self.letters[self.current_letter], font=('Arial', self.radius+2, 'bold'))
         self.arrow_to = set()
         self.nodes_to = set()
         self.arrow_from = set()
@@ -134,7 +134,7 @@ class Node:
                         my = (y1+y2)//2
                         am = self.canvas.create_line(x1,y1,mx,my,fill='black', arrow=tk.LAST)
                         me = self.canvas.create_line(mx,my,x2,y2,fill='black')
-                        mult = self.canvas.create_text(mx, my, text=str(B[i][j]), font = ('Arial', node_radius))
+                        mult = self.canvas.create_text(mx, my, text=str(B[i][j]), font = ('Arial', self.radius))
                         p_on_left_click_edge = partial(self.on_left_click_edge, mult)
                         p_on_right_click_edge = partial(self.on_right_click_edge, mult)
                         self.canvas.tag_bind(mult, '<Button-1>', p_on_left_click_edge)
@@ -152,7 +152,7 @@ class Node:
                         my = (y1+y2)//2
                         am = self.canvas.create_line(x1,y1,mx,my,fill='black', arrow=tk.LAST)
                         me = self.canvas.create_line(mx,my,x2,y2,fill='black')
-                        mult = self.canvas.create_text(mx, my, text=str(-B[i][j]), font = ('Arial', node_radius))
+                        mult = self.canvas.create_text(mx, my, text=str(-B[i][j]), font = ('Arial', self.radius))
                         p_on_left_click_edge = partial(self.on_left_click_edge, mult)
                         p_on_right_click_edge = partial(self.on_right_click_edge, mult)
                         self.canvas.tag_bind(mult, '<Button-1>', p_on_left_click_edge)
@@ -174,7 +174,7 @@ class Node:
                         my = (y1+y2)//2
                         am = self.canvas.create_line(x1,y1,mx,my,fill='black', arrow=tk.LAST)
                         me = self.canvas.create_line(mx,my,x2,y2,fill='black')
-                        mult = self.canvas.create_text(mx, my, text=str(B[i][j]), font = ('Arial', node_radius))
+                        mult = self.canvas.create_text(mx, my, text=str(B[i][j]), font = ('Arial', self.radius))
                         p_on_left_click_edge = partial(self.on_left_click_edge, mult)
                         p_on_right_click_edge = partial(self.on_right_click_edge, mult)
                         self.canvas.tag_bind(mult, '<Button-1>', p_on_left_click_edge)
@@ -192,7 +192,7 @@ class Node:
                         my = (y1+y2)//2
                         am = self.canvas.create_line(x1,y1,mx,my,fill='black', arrow=tk.LAST)
                         me = self.canvas.create_line(mx,my,x2,y2,fill='black')
-                        mult = self.canvas.create_text(mx, my, text=str(-B[i][j]), font = ('Arial', node_radius))
+                        mult = self.canvas.create_text(mx, my, text=str(-B[i][j]), font = ('Arial', self.radius))
                         p_on_left_click_edge = partial(self.on_left_click_edge, mult)
                         p_on_right_click_edge = partial(self.on_right_click_edge, mult)
                         self.canvas.tag_bind(mult, '<Button-1>', p_on_left_click_edge)
@@ -219,7 +219,7 @@ class Node:
                         arrow_to_mid = self.canvas.create_line(selected_node.x, selected_node.y, midx, midy,
                                                 fill='black', arrow=tk.LAST)  # Add arrowhead
                         mid_to_end = self.canvas.create_line(midx, midy, self.x, self.y, fill='black')
-                        mult = self.canvas.create_text(midx, midy, text="1", font = ('Arial', node_radius)) 
+                        mult = self.canvas.create_text(midx, midy, text="1", font = ('Arial', self.radius)) 
                         p_on_left_click_edge = partial(self.on_left_click_edge, mult)
                         p_on_right_click_edge = partial(self.on_right_click_edge, mult)
                         self.canvas.tag_bind(mult, '<Button-1>', p_on_left_click_edge)
@@ -259,7 +259,7 @@ class Node:
             self.canvas.delete(w)
 
 class GridApp:
-    def __init__(self, root, rows, cols):
+    def __init__(self, root, rows, cols, node_spacing, node_radius):
         self.root = root
         self.root.title("Node Grid")
 
@@ -271,7 +271,7 @@ class GridApp:
             for col in range(cols):
                 x = col * node_spacing + (node_spacing // 2)
                 y = row * node_spacing + (node_spacing // 2)
-                self.nodes.append(Node(self, self.canvas, x, y))
+                self.nodes.append(Node(self, self.canvas, x, y, node_radius))
 
         self.modes = ['set nodes', 'move nodes', 'edges', 'mutate']  # Add more modes as needed
         self.setup_modes()
@@ -307,6 +307,28 @@ class GridApp:
         
 
 if __name__ == "__main__":
+    cfg_numrows = 5
+    cfg_numcols = 5
+    cfg_noderadius = 10
+    cfg_nodespacing = 100
+    cfg = 'flip_config.txt'
+    try:
+        with open(cfg, 'r') as file:
+            for line in file:
+                line_split = line.split('=')
+                if line_split[0] == 'num_rows':
+                    cfg_numrows = int(line_split[1])
+                elif line_split[0] == 'num_columns':
+                    cfg_numcols = int(line_split[1])
+                elif line_split[0] == 'node_radius':
+                    cfg_noderadius = int(line_split[1])
+                elif line_split[0] == 'node_spacing':
+                    cfg_nodespacing = int(line_split[1])
+    except FileNotFoundError:
+        print("Config file not found. Please create a flip_config.txt file and format as per the instructions on GitHub.")
+    except Exception as e:
+        print("An error occurred: ", e)
+
     root = tk.Tk()
-    app = GridApp(root, rows=5, cols=5)
+    app = GridApp(root, rows=cfg_numrows, cols=cfg_numcols, node_spacing=cfg_nodespacing, node_radius=cfg_noderadius)
     root.mainloop()
