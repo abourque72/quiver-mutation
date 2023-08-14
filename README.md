@@ -1,8 +1,28 @@
 # quiver-mutation
+
 Play around with quiver mutation!
-You will need to install python, pip, and tkinter.
+You will need to install python 3, pip, and tkinter.
 Based on the rules in https://arxiv.org/abs/1608.05735
+
 ----------------------------------
+
+# Configuration 
+
+There is a config file, which must be named quiver_config.txt, and must be placed in the same folder as the main python file. 
+
+It has four options: 
+
+- num_rows: the number of rows of nodes
+- num_columns: the number of columns of nodes
+- node_radius: the radius (presumably) in pixels of the nodes.
+- node_spacing: the spacing (presumably) in pixels between the nodes.
+
+Please keep the formatting as is provided; namely, the name of each entry must be as is given above, and the equals sign must be directly in between the name and the number (no spaces).
+
+-----------------------------
+
+# App Features
+
 There are four modes: set nodes, move nodes, edges, and mutate.
 
 1. Set Nodes:
